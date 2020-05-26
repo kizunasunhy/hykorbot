@@ -1,5 +1,6 @@
 # hykorbot
 English | [Korean](/README_KOR.md)
+
 Korean chatbot based on KoGPT2
 ## Usage
 ### Requirement
@@ -40,5 +41,6 @@ train_data needs to have this format.
 ### Start Training
 Use the KoGPT2 pretrained model as initiate model and train for 15 epochs.
 ```
-python3 train_chatbot.py --dataset_path=train_data_chatbot.txt --init_model=model/pytorch_kogpt2_676e9bcfa7.params --n_epochs=15
+python3 train_chatbot.py --dataset_path=train_data_chatbot.txt 
+--init_model=model/pytorch_kogpt2_676e9bcfa7.params --n_epochs=15
 ```
