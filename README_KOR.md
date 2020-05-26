@@ -1,7 +1,7 @@
-# hykobot
+# hykorbot
 
 ## Usage
-###필요한 패키지
+### 필요한 패키지
 ```
 pytorch >= 0.4
 pytorch ignite
