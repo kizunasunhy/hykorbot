@@ -8,6 +8,10 @@ pytorch ignite
 MXNet == 1.5.0 or higher
 gluonnlp == 0.8.1
 ```
+### 추론
+```
+python3 interact_chatbot.py --model_checkpoint=the/path/to/pytorch_model.bin
+```
 ## 학습
 ### 데이터 전처리 
 preprocessing.py 실행합니다.
@@ -48,3 +52,6 @@ KoGPT2 model을 training할 때는 task가 두개 있습니다:
 "history": ["내가 가장 많이 메일을 쓴 거래처를 알려줘“]의 gold answer입니다. 
 나머지("candidates"[0] ~ "candidates"[14])는 distractor입니다. 
 Next-sentence prediction할 때 distractor도 필요합니다.
+```
+python3 train_chatbot.py --dataset_path=train_data_chatbot.txt --init_model=model/pytorch_kogpt2_676e9bcfa7.params --n_epochs=15
+```
