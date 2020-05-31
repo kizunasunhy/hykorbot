@@ -1,4 +1,6 @@
 # hykorbot
+[영어] | 한국어(/README.md)  
+KoGPT2기반으로 개발한 한국어 챗봇입니다.
 
 ## Usage
 ### 필요한 패키지
@@ -42,6 +44,8 @@ train_data가 이런 형식을 가져야 합니다:
 각 utterances에서 candidates가 16개 있고 history가 하나 있습니다. 
 "history"의 문장과 "candidates의 마지막 문장이 유사 문장이라고 볼 수 있습니다. 
 
+### 학습 과정
+
 KoGPT2 model을 training할 때는 task가 두개 있습니다:
 
 1. *Language modeling*
@@ -52,6 +56,8 @@ KoGPT2 model을 training할 때는 task가 두개 있습니다:
 "history": ["내가 가장 많이 메일을 쓴 거래처를 알려줘“]의 gold answer입니다. 
 나머지("candidates"[0] ~ "candidates"[14])는 distractor입니다. 
 Next-sentence prediction할 때 distractor도 필요합니다.
+
+전처리 후 train_data_chatbot.txt가 생긴 다음에 아래 코드를 실행합니다.
 ```
 python3 train_chatbot.py --dataset_path=train_data_chatbot.txt --init_model=model/pytorch_kogpt2_676e9bcfa7.params --n_epochs=15
 ```
