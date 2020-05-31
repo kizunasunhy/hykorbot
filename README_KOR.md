@@ -1,5 +1,5 @@
 # hykorbot
-[영어] | 한국어(/README.md)  
+[영어](/README.md) | 한국어  
 KoGPT2기반으로 개발한 한국어 챗봇입니다.
 
 ## Usage
