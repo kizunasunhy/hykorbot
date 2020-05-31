@@ -12,7 +12,7 @@ gluonnlp == 0.8.1
 ```
 ### Inference
 ```
-python3 interact_chatbot.py --model=gpt2 --model_checkpoint=the/path/to/pytorch_model.bin
+python3 interact_chatbot.py --model_checkpoint=the/path/to/pytorch_model.bin
 ```
 ## Training
 ### Preprocessing
