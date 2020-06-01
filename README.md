@@ -38,6 +38,17 @@ train_data needs to have this format.
 "history": ["내가 가장 많이 메일을 쓴 거래처를 알려줘“]}]
 }
 ```
+There will be 2 tasks when finetuning KoGPT2 model.
+
+1. *Language modeling*
+2. *Next-sentence prediction*
+
+The Next-sentence prediction task is to predict the next sentence of "history".
+Therefore "candidates"[-1] ("내가 쓴 메일을 가장 많이 받은 거래처는 어디야?“) the golden answer of
+"history"("내가 가장 많이 메일을 쓴 거래처를 알려줘“).
+And the rest("candidates"[0] ~ "candidates"[14])are distractors. 
+distractors are necessary in Next-sentence prediction task.
+
 ### Start Training
 Use the KoGPT2 pretrained model as initiate model and train for 15 epochs.
 ```
