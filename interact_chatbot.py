@@ -14,7 +14,7 @@ import torch
 import torch.nn.functional as F
 
 from transformers import GPT2Config, GPT2DoubleHeadsModel
-from train import SPECIAL_TOKENS, build_input_from_segments_inference
+from train import SPECIAL_TOKENS, build_input_from_segments
 from new_tokenizer import MyTokenizer
 
 
@@ -62,13 +62,11 @@ def top_filtering(logits, top_k=0., top_p=0.9, threshold=-float('Inf'), filter_v
     return logits
 
 
-def sample_sequence(history, tokenizer, model, args, current_output=None):
+def sample_sequence(history, tokenizer, model, args, current_output=[]):
     special_tokens_ids = tokenizer.convert_tokens_to_ids(SPECIAL_TOKENS)
-    if current_output is None:
-        current_output = []
 
     for i in range(args.max_length):
-        instance = build_input_from_segments_inference(history, current_output, tokenizer, with_eos=False)
+        instance = build_input_from_segments([tokenizer.convert_tokens_to_ids(history)], current_output, tokenizer, with_eos=False)
         input_ids = torch.tensor(instance["input_ids"], device=args.device).unsqueeze(0)
         token_type_ids = torch.tensor(instance["token_type_ids"], device=args.device).unsqueeze(0)
 
@@ -98,7 +96,6 @@ def add_special_tokens_(model, tokenizer):
 def run():
     parser = ArgumentParser()
     parser.add_argument("--model_checkpoint", type=str, default="", help="Path, url or short name of the model")
-    parser.add_argument("--max_history", type=int, default=2, help="Number of previous utterances to keep in history")
     parser.add_argument("--device", type=str, default="cuda" if torch.cuda.is_available() else "cpu", help="Device (cuda or cpu)")
     parser.add_argument("--no_sample", action='store_true', help="Set to use greedy decoding instead of sampling")
     parser.add_argument("--max_length", type=int, default=20, help="Maximum length of the output utterances")
