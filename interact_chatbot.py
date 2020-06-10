@@ -62,9 +62,10 @@ def top_filtering(logits, top_k=0., top_p=0.9, threshold=-float('Inf'), filter_v
     return logits
 
 
-def sample_sequence(history, tokenizer, model, args, current_output=[]):
+def sample_sequence(history, tokenizer, model, args):
     special_tokens_ids = tokenizer.convert_tokens_to_ids(SPECIAL_TOKENS)
-
+    current_output = []
+        
     for i in range(args.max_length):
         instance = build_input_from_segments([tokenizer.convert_tokens_to_ids(history)], current_output, tokenizer, with_eos=False)
         input_ids = torch.tensor(instance["input_ids"], device=args.device).unsqueeze(0)
