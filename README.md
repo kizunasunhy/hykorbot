@@ -2,6 +2,19 @@
 English | [Korean](/README_KOR.md)
 
 Korean chatbot based on KoGPT2
+## Example
+```
+>>> 이름이 뭐예요  
+위로봇이요.</s>  
+>>> 좋은 이름이에요  
+저도 제 이름 좋아요.</s>  
+>>> 오늘 날씨 어때요  
+날씨 어플에 물어보세요.</s>  
+>>> 섭섭해요  
+섭섭함을 풀고 새로운 출발을 하면 좋을 거예요.</s>  
+>>> 똑똑하네요  
+감사합니다.</s>  
+```
 ## Usage
 ### Requirement
 ```
